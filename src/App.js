@@ -26,9 +26,11 @@ export default function App() {
     <div className="app">
       <div className="sidebar">
         <FriendsList />
+        <FormAddFriend />
+        <Button>Add friend</Button>
       </div>
-      <AddFriend />
-      <SplitForm />
+
+      <FormSplitBill />
     </div>
   );
 }
@@ -62,19 +64,51 @@ function Friend({ friend }) {
         </p>
       )}
       {friend.balance === 0 && <p>You and {friend.name} are even</p>}
-
-      <button className="button">Select</button>
+      
+      <Button>Select</Button>
     </li>
   );
 }
 
-function AddFriend() {
+function Button({ children }) {
+  return  <button className="button">{ children }</button>
+}
+
+function FormAddFriend() {
   return (
-    <div claaName="addForm">
-      {/* Friend name<input></input>
-      Image URL<input></input> */}
-    </div>
+    <form className="form-add-friend">
+      <label>🧑‍🤝‍🧑Friend name</label>
+      <input type="text" />
+      
+      <label>🖼️Image URL</label>
+      <input type="text" />
+
+      <Button>Add</Button>
+    </form>
   );
 }
 
-function SplitForm() {}
+function FormSplitBill() {
+  return ( 
+    <form className="form-split-bill">
+      <h2>Split a bill</h2>
+
+      <label>💰Bill value</label>
+      <input type="text" />
+
+      <label>🧍🏼 Your expense </label>
+      <input tepy="text"></input>
+
+      <label>👫🏽X's expense </label>
+      <input tepy="text"></input>
+
+      <label>🤑Who is paying the bill</label>
+      <select>
+        <option value="user">You</option>
+        <option vlaue="friend">X</option>
+      </select>
+
+      <Button>Split bill</Button>
+    </form>
+  );
+}
